@@ -1,0 +1,79 @@
+bicyclegan_args:
+  batch_size: 2
+  beta1: 0.5
+  checkpoints_dir: ./experiments/baistpp_cvaegan_gumble_celoss_z4
+  conditional_D: false
+  continue_train: false
+  direction: AtoB
+  epoch: latest
+  epoch_count: 1
+  gan_mode: lsgan
+  gumble_softmax: true
+  init_gain: 0.02
+  init_type: xavier
+  input_nc: 3
+  isTrain: true
+  lambda_CE: 10.0
+  lambda_GAN: 1.0
+  lambda_GAN2: 1.0
+  lambda_L1: 0.0
+  lambda_kl: 0.01
+  lambda_kl_rev: 0.0
+  lambda_z: 0.0
+  lr: 0.0002
+  lr_decay_iters: 100
+  lr_policy: linear
+  name: amlt
+  ndf: 64
+  nef: 64
+  netD: basic_256_multi
+  netD2: basic_256_multi
+  netE: resnet_256
+  netG: unet_256
+  ngf: 64
+  niter: 100
+  niter_decay: 100
+  nl: relu
+  norm: instance
+  num_Ds: 2
+  num_threads: 4
+  nz: 4
+  output_nc: 5
+  preprocess: resize_and_crop
+  upsample: basic
+  use_dropout: true
+  use_same_D: true
+  verbose: false
+  where_add: all
+dataset_args:
+  aug_args:
+    train:
+      image:
+        Flip: { }
+        NearBBoxResizedSafeCrop:
+          height: 256
+          max_ratio: 0.1
+          width: 256
+        Rot90: { }
+      video:
+        Reverse: { }
+    valid:
+      image:
+        NearBBoxResizedSafeCrop:
+          height: 256
+          max_ratio: 0.1
+          width: 256
+      video: { }
+  num_fut: 0
+  num_gts: 7
+  num_past: 0
+  root_dir:
+    - ./dataset/b-aist++
+  suffix: png
+  temporal_step: 1
+  use_trend: true
+  video_list:
+    b-aist++:
+      train: ./configs/b-aist++_train_dancer_videos.yaml
+      valid: ./configs/b-aist++_valid_dancer_videos.yaml
+val_range: 255.0

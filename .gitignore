@@ -1,0 +1,15 @@
+__pycache__/
+experiments/
+results/
+checkpoints/
+.idea/
+*.egg-info
+*.py[cod]
+*.so
+*.egg
+*.zip
+*.pkl
+.DS_Store
+dist
+build
+TEST.md

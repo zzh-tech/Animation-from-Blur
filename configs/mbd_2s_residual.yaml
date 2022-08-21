@@ -1,0 +1,75 @@
+dataset_args:
+  aug_args:
+    train:
+      image:
+        Flip: { }
+        NearBBoxResizedSafeCrop:
+          height: 192
+          max_ratio: 0.1
+          width: 192
+        Rot90: { }
+      video:
+        Reverse: { }
+    valid:
+      image:
+        NearBBoxResizedSafeCrop:
+          height: 192
+          max_ratio: 0.1
+          width: 160
+      video: { }
+  num_fut: 0
+  num_gts: 7
+  num_past: 0
+  root_dir:
+    - ./dataset/b-aist++
+  suffix: png
+  use_trend: True
+  video_list:
+    b-aist++:
+      train: ./configs/b-aist++_train_dancer2_videos.yaml
+      valid: ./configs/b-aist++_valid_dancer2_videos.yaml
+decomposer_s1_args:
+  block_expansion: 128
+  conv_down: true
+  in_channels: 3
+  max_features: 512
+  norm_type: batch
+  num_bottleneck_blocks: 12
+  num_down_blocks: 2
+  out_channels: 21
+  trans_up: true
+decomposer_s2_args:
+  block_expansion: 128
+  conv_down: true
+  in_channels: 3
+  max_features: 512
+  norm_type: batch
+  num_bottleneck_blocks: 12
+  num_down_blocks: 2
+  out_channels: 21
+  trans_up: true
+epoch: 400
+flow_embedder_args:
+  i: -1
+  multires: 5
+flow_estimator_args:
+  checkpoint: ./checkpoints/raft-sintel.pth
+  iters: 30
+flow_to_s2: false
+hybrid: false
+num_iterations: 1
+num_workers: 4
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+residual: true
+resume_dir: null
+s1_to_s2: true
+scheduler:
+  eta_min: 1.0e-06
+train_batch_size: 2
+trend_embedder_args:
+  i: -1
+  multires: 5
+val_range: 255.0
+valid_batch_size: 2
