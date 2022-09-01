@@ -1,6 +1,6 @@
 # Animation-from-Blur
 
-#### :rocket: **[ECCV2022 Oral]** [Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance](https://arxiv.org/abs/2207.10123)
+#### :rocket: **[ECCV2022]** [Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance](https://arxiv.org/abs/2207.10123)
 
 by [Zhihang Zhong](https://zzh-tech.github.io/), Xiao Sun, Zhirong Wu, Yinqiang Zheng, Stephen Lin, and Imari Sato
 
