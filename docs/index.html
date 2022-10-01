@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance.">
+    <meta name="keywords" content="Deblurring, Blur decomposition, Multi-modal image-to-video, Directional ambiguity">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nerfies: Deformable Neural Radiance Fields</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/zuica_icon.jpg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="https://zzh-tech.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://zzh-tech.github.io/Dual-Reversed-RS/">
+                        Dual-Reversed-RS
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Animation from Blur: Multi-modal Blur Decomposition with
+                        Motion Guidance</h1>
+                    <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://zzh-tech.github.io/">Zhihagn Zhong</a><sup>1,3</sup>,</span>
+                        <span class="author-block">
+              <a href="https://jimmysuen.github.io/">Xiao Sun</a><sup>2</sup>,</span>
+                        <span class="author-block">
+              <a href="https://www.microsoft.com/en-us/research/people/wuzhiron/">Zhirong Wu</a><sup>2</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=JD-5DKcAAAAJ&hl=zh-CN">Yinqiang Zheng</a><sup>1</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://www.microsoft.com/en-us/research/people/stevelin/">Stephen Lin</a><sup>2</sup>,
+            </span>
+                        <span class="author-block">
+              <a href="https://www.nii.ac.jp/en/faculty/digital_content/sato_imari/">Imari Sato</a><sup>1,3</sup>
+            </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>The University of Tokyo,</span>
+                        <span class="author-block"><sup>2</sup>Microsoft Research Asia,</span>
+                        <span class="author-block"><sup>3</sup>National Institute of Informatics</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                <a href="https://arxiv.org/pdf/2207.10123"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+                            <span class="link-block">
+                <a href="https://arxiv.org/abs/2207.10123"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                            <!--                            &lt;!&ndash; Video Link. &ndash;&gt;-->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="fab fa-youtube"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Video</span>-->
+                            <!--                </a>-->
+                            <!--              </span>-->
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                <a href="https://github.com/zzh-tech/Animation-from-Blur"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                            <!--                            &lt;!&ndash; Dataset Link. &ndash;&gt;-->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="far fa-images"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Data</span>-->
+                            <!--                  </a>-->
+                            <!--                                </span>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <!--            <video id="teaser" autoplay muted loop playsinline height="100%">-->
+            <!--                <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"-->
+            <!--                        type="video/mp4">-->
+            <!--            </video>-->
+            <img src="https://drive.google.com/uc?export=view&id=1zS8uNCtNQzmiwuhUTCEwtkKiwc1ikyOn" alt="teaser">
+            <h2 class="subtitle has-text-centered">
+                <br>
+                <b>Aimation-from-Blur supports various interfaces to extract multiple plausible sharp video clips from
+                    the same image with motion blur.</b>
+            </h2>
+        </div>
+    </div>
+</section>
+
+
+<!--<section class="hero is-light is-small">-->
+<!--    <div class="hero-body">-->
+<!--        <div class="container">-->
+<!--            <div id="results-carousel" class="carousel results-carousel">-->
+<!--                <div class="item item-steve">-->
+<!--                    <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-chair-tp">-->
+<!--                    <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/chair-tp.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-shiba">-->
+<!--                    <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/shiba.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-fullbody">-->
+<!--                    <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/fullbody.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-blueshirt">-->
+<!--                    <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/blueshirt.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-mask">-->
+<!--                    <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/mask.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-coffee">-->
+<!--                    <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/coffee.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <div class="item item-toby">-->
+<!--                    <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">-->
+<!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/toby2.mp4"-->
+<!--                                type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We study the challenging problem of recovering detailed motion from a single motion-blurred
+                        image. Existing solutions to this problem estimate a single image sequence without considering
+                        the motion ambiguity for each region. Therefore, the results tend to converge to the mean of the
+                        multi-modal possibilities.
+                        In this paper, we explicitly account for such motion ambiguity,
+                        allowing us to generate multiple plausible solutions all in sharp detail. The key idea is to
+                        introduce a motion guidance representation, which is a compact quantization of 2D optical flow
+                        with only four discrete motion directions. Conditioned on the motion guidance, the blur
+                        decomposition is led to a specific, unambiguous solution by using a novel two-stage
+                        decomposition network. We propose a unified framework for blur decomposition, which supports
+                        various interfaces for generating our motion guidance, including human input, motion information
+                        from adjacent video frames, and learning from a video dataset. Extensive experiments on
+                        synthesized datasets and real-world data show that the proposed framework is qualitatively and
+                        quantitatively superior to previous methods, and also offers the merit of producing physically
+                        plausible and diverse solutions.
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Video</h2>
+                <div class="publication-video">
+                    <iframe src="https://drive.google.com/uc?export=view&id=1hkbpwgRliwJ3Cujdds8K2NYqca4-0CBg"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <!--/ Paper video. -->
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <div class="columns is-centered">
+            <!-- Visual Effects. &ndash;&gt;-->
+            <div class="column">
+                <div class="content">
+                    <h2 class="title is-3">Directional Ambiguity</h2>
+                    <p>
+                        Blur decomposition from a single blurry image faces the fundamental problem of directional
+                        ambiguity. Each independent and uniform motion blurred region can correspond to either a forward
+                        or a backward motion sequence, resulting in an exponential increase in the number of potential
+                        solutions for the image. However, existing methods for blur decomposition are designed to
+                        predict a single solution among them. This directional ambiguity brings instability to the
+                        training process and leads to poorly diversified and low-quality results.
+                    </p>
+                    <img src="./imgs/teaser.jpg" class="center">
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <!-- Visual Effects. &ndash;&gt;-->
+            <div class="column">
+                <div class="content">
+                    <h2 class="title is-3">Methodology</h2>
+                    <h3 class="title is-4">Network Architecture</h3>
+                    <p>
+                        We propose a novel motion guidance representation to address the directional ambiguity in blur
+                        decomposition.
+                        The motion guidance is an optical flow representation quantized into four major quadrant
+                        directions, describing the motion field roughly. Given the input blurry image, conditioned on
+                        the compact motion guidance, the blur decomposition becomes a nearly deterministic one-to-one
+                        mapping problem without directional ambiguity.
+                        We propose a two-stage network to predict the image sequence. The first stage expands the blurry
+                        image into an image sequence based on the motion guidance, and the second stage refines the
+                        visual details in a residual fashion to generate high-quality images.
+                        The decomposition network shows significantly better training convergence with conditioning on
+                        an additional guidance input.
+                    </p>
+                    <div id="center">
+                        <div class="left">
+                            <img src="https://drive.google.com/uc?export=view&id=1wlqbVafPLjQTBypaGTAHQo2JUeCNmxOj">
+                        </div>
+                        <div class="right">
+                            <img src="https://drive.google.com/uc?export=view&id=1w_tcKJAP4nGkpACSwhkohk1zh4p2VY_0"
+                                 width="85%">
+                        </div>
+                    </div>
+                    <h3 class="title is-4">Multi-modal Interfaces</h3>
+                    <p>
+                        Due to the compactness of motion guidance representation, our unified framework only needs to be
+                        trained once, while supporting various decomposition scenarios under different modalities. We
+                        provide three interfaces to acquire the motion guidance:<br>
+                        <b>(1) a network to predict possible motion guidance, (2) motion from video, and (3) user
+                            annotation</b>.
+                    </p>
+                    <img src="./imgs/guidance.jpg" class="center">
+                    <br>
+                    <p>
+                        We follow the cVAE-GAN to build a guidance prediction network.
+                    </p>
+                    <!--                    https://drive.google.com/file/d/1CI-x10xcs9_l6KsXifPCoKAbR5PXPZdK/view?usp=sharing-->
+                    <img src="https://drive.google.com/uc?export=view&id=1CI-x10xcs9_l6KsXifPCoKAbR5PXPZdK"
+                         class="center">
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <!-- Visual Effects. &ndash;&gt;-->
+            <div class="column">
+                <div class="content">
+                    <h2 class="title is-3">Visual Results</h2>
+                    Here are results of using predicted guidance.
+                    <br>
+                    <br>
+                    <!--                    https://drive.google.com/file/d/1-Pd9S48ry5UZfPfC11bZFon_gtFeHgei/view?usp=sharing-->
+                    <img src="https://drive.google.com/uc?export=view&id=1-Pd9S48ry5UZfPfC11bZFon_gtFeHgei">
+                    <br>
+                    Here are results of using guidance from video.
+                    <br>
+                    <br>
+                    <!--                    https://drive.google.com/file/d/14gja1v7-EM_wMZKx_3Zc6X4W5BlgxA7x/view?usp=sharing-->
+                    <img src="https://drive.google.com/uc?export=view&id=14gja1v7-EM_wMZKx_3Zc6X4W5BlgxA7x">
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <!--            &lt;!&ndash; Visual Effects. &ndash;&gt;-->
+        <!--            <div class="column">-->
+        <!--                <div class="content">-->
+        <!--                    <h2 class="title is-3">Visual Effects</h2>-->
+        <!--                    <p>-->
+        <!--                        Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect-->
+        <!--                        would be impossible without nerfies since it would require going through a wall.-->
+        <!--                    </p>-->
+        <!--                    <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">-->
+        <!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/dollyzoom-stacked.mp4"-->
+        <!--                                type="video/mp4">-->
+        <!--                    </video>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            &lt;!&ndash;/ Visual Effects. &ndash;&gt;-->
+
+        <!--            &lt;!&ndash; Matting. &ndash;&gt;-->
+        <!--            <div class="column">-->
+        <!--                <h2 class="title is-3">Matting</h2>-->
+        <!--                <div class="columns is-centered">-->
+        <!--                    <div class="column content">-->
+        <!--                        <p>-->
+        <!--                            As a byproduct of our method, we can also solve the matting problem by ignoring-->
+        <!--                            samples that fall outside of a bounding box during rendering.-->
+        <!--                        </p>-->
+        <!--                        <video id="matting-video" controls playsinline height="100%">-->
+        <!--                            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/matting.mp4"-->
+        <!--                                    type="video/mp4">-->
+        <!--                        </video>-->
+        <!--                    </div>-->
+
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        &lt;!&ndash;/ Matting. &ndash;&gt;-->
+
+        <!--        &lt;!&ndash; Animation. &ndash;&gt;-->
+        <!--        <div class="columns is-centered">-->
+        <!--            <div class="column is-full-width">-->
+        <!--                <h2 class="title is-3">Animation</h2>-->
+
+        <!--                &lt;!&ndash; Interpolating. &ndash;&gt;-->
+        <!--                <h3 class="title is-4">Interpolating states</h3>-->
+        <!--                <div class="content has-text-justified">-->
+        <!--                    <p>-->
+        <!--                        We can also animate the scene by interpolating the deformation latent codes of two input-->
+        <!--                        frames. Use the slider here to linearly interpolate between the left frame and the right-->
+        <!--                        frame.-->
+        <!--                    </p>-->
+        <!--                </div>-->
+        <!--                <div class="columns is-vcentered interpolation-panel">-->
+        <!--                    <div class="column is-3 has-text-centered">-->
+        <!--                        <img src="https://homes.cs.washington.edu/~kpar/nerfies/images/interpolate_start.jpg"-->
+        <!--                             class="interpolation-image"-->
+        <!--                             alt="Interpolate start reference image."/>-->
+        <!--                        <p>Start Frame</p>-->
+        <!--                    </div>-->
+        <!--                    <div class="column interpolation-video-column">-->
+        <!--                        <div id="interpolation-image-wrapper">-->
+        <!--                            Loading...-->
+        <!--                        </div>-->
+        <!--                        <input class="slider is-fullwidth is-large is-info"-->
+        <!--                               id="interpolation-slider"-->
+        <!--                               step="1" min="0" max="100" value="0" type="range">-->
+        <!--                    </div>-->
+        <!--                    <div class="column is-3 has-text-centered">-->
+        <!--                        <img src="https://homes.cs.washington.edu/~kpar/nerfies/images/interpolate_end.jpg"-->
+        <!--                             class="interpolation-image"-->
+        <!--                             alt="Interpolation end reference image."/>-->
+        <!--                        <p class="is-bold">End Frame</p>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                <br/>-->
+        <!--                &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
+
+        <!--                &lt;!&ndash; Re-rendering. &ndash;&gt;-->
+        <!--                <h3 class="title is-4">Re-rendering the input video</h3>-->
+        <!--                <div class="content has-text-justified">-->
+        <!--                    <p>-->
+        <!--                        Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel-->
+        <!--                        viewpoint such as a stabilized camera by playing back the training deformations.-->
+        <!--                    </p>-->
+        <!--                </div>-->
+        <!--                <div class="content has-text-centered">-->
+        <!--                    <video id="replay-video"-->
+        <!--                           controls-->
+        <!--                           muted-->
+        <!--                           preload-->
+        <!--                           playsinline-->
+        <!--                           width="75%">-->
+        <!--                        <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/replay.mp4"-->
+        <!--                                type="video/mp4">-->
+        <!--                    </video>-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        &lt;!&ndash;/ Animation. &ndash;&gt;-->
+
+
+        <!-- Concurrent Work. -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3">Related Links</h2>
+
+                <div class="content has-text-justified">
+                    <p>
+                        We have another interesting work that uses another kind of motion artifact, <em>i.e.</em>,
+                        rolling shutter distortion, to realize image2video:
+                        <a href="https://arxiv.org/abs/2203.06451">Bringing Rolling Shutter Images Alive with Dual
+                            Reversed Distortion</a> (<a href="https://zzh-tech.github.io/Dual-Reversed-RS/">Website</a>, <a href="https://github.com/zzh-tech/Dual-Reversed-RS">Code</a>).
+                    </p>
+                    <!--                    <p>-->
+                    <!--                        <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a-->
+                    <!--                            href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>-->
+                    <!--                        both use deformation fields to model non-rigid scenes.-->
+                    <!--                    </p>-->
+                    <!--                    <p>-->
+                    <!--                        Some works model videos with a NeRF by directly modulating the density, such as <a-->
+                    <!--                            href="https://video-nerf.github.io/">Video-NeRF</a>, <a-->
+                    <!--                            href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a-->
+                    <!--                            href="https://neural-3d-video.github.io/">DyNeRF</a>-->
+                    <!--                    </p>-->
+                    <!--                    <p>-->
+                    <!--                        There are probably many more by the time you are reading this. Check out <a-->
+                    <!--                            href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>,-->
+                    <!--                        and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF-->
+                    <!--                        papers</a>.-->
+                    <!--                    </p>-->
+                </div>
+            </div>
+        </div>
+        <!--/ Concurrent Work. -->
+
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{zhong2022animation,
+  title={Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance},
+  author={Zhong, Zhihang and Sun, Xiao and Wu, Zhirong and Zheng, Yinqiang and Lin, Stephen and Sato, Imari},
+  journal={arXiv preprint arXiv:2207.10123},
+  year={2022}
+}</code></pre>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <a class="icon-link"
+               href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+            <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        This means you are free to borrow the <a
+                            href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+                        we just ask that you link back to this page in the footer.
+                        Please remember to remove the analytics code included in the header of the website which
+                        you do not want on your website.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
