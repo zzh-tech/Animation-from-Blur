@@ -4,7 +4,7 @@
 
 by [Zhihang Zhong](https://zzh-tech.github.io/), Xiao Sun, Zhirong Wu, Yinqiang Zheng, Stephen Lin, and Imari Sato
 
-:point_right: [Video demo](https://drive.google.com/file/d/1ixlU0j-ZnXriVewGe5mQ2pd5mII8d72C/view?usp=sharing)
+:point_right: [Project website](https://zzh-tech.github.io/Animation-from-Blur/), [Video demo](https://drive.google.com/file/d/1ixlU0j-ZnXriVewGe5mQ2pd5mII8d72C/view?usp=sharing)
 
 Please leave a ⭐ if you like this project!
 
