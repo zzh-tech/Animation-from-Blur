@@ -8,6 +8,10 @@ by [Zhihang Zhong](https://zzh-tech.github.io/), Xiao Sun, Zhirong Wu, Yinqiang 
 
 Please leave a ⭐ if you like this project!
 
+## News
+
+Please check our new work in CVPR 2023, [BiT](https://github.com/zzh-tech/BiT) (Blur Interpolation Transformer), a fast and powerful transformer-based technique for arbitrary factor blur interpolation with state-of-the-art performance.
+
 #### **TL;DR**:
 
 Existing solutions for recovering sharp motion from a single motion-blurred image do not consider the directional
@@ -75,11 +79,19 @@ The training process of guidance predictor is unstable due to complicated GAN st
 If you find this repository useful, please consider citing:
 
 ```bibtex
-@article{zhong2022animation,
-  title={Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance},
+@inproceedings{zhong2022animation,
+  title={Animation from blur: Multi-modal blur decomposition with motion guidance},
   author={Zhong, Zhihang and Sun, Xiao and Wu, Zhirong and Zheng, Yinqiang and Lin, Stephen and Sato, Imari},
-  journal={arXiv preprint arXiv:2207.10123},
-  year={2022}
+  booktitle={Computer Vision--ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part XIX},
+  pages={599--615},
+  year={2022},
+  organization={Springer}
+}
+@inproceedings{zhong2023blur,
+  title={Blur Interpolation Transformer for Real-World Motion from Blur},
+  author={Zhong, Zhihang and Cao, Mingdeng and Ji, Xiang and Zheng, Yinqiang and Sato, Imari},
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023}
 }
 ```
 
