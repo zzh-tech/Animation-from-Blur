@@ -4,11 +4,19 @@ This is the repository that contains source code for the [Animation-from-Blur we
 
 If you find Animation-from-Blur useful for your work please cite:
 ```bibtex
-@article{zhong2022animation,
-  title={Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance},
+@inproceedings{zhong2022animation,
+  title={Animation from blur: Multi-modal blur decomposition with motion guidance},
   author={Zhong, Zhihang and Sun, Xiao and Wu, Zhirong and Zheng, Yinqiang and Lin, Stephen and Sato, Imari},
-  journal={arXiv preprint arXiv:2207.10123},
-  year={2022}
+  booktitle={Computer Vision--ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part XIX},
+  pages={599--615},
+  year={2022},
+  organization={Springer}
+}
+@inproceedings{zhong2023blur,
+  title={Blur Interpolation Transformer for Real-World Motion from Blur},
+  author={Zhong, Zhihang and Cao, Mingdeng and Ji, Xiang and Zheng, Yinqiang and Sato, Imari},
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023}
 }
 ```
 

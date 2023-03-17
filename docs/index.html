@@ -63,6 +63,9 @@
                     More Research
                 </a>
                 <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://zzh-tech.github.io/BiT/">
+                        BiT
+                    </a>
                     <a class="navbar-item" href="https://zzh-tech.github.io/Dual-Reversed-RS/">
                         Dual-Reversed-RS
                     </a>
@@ -497,7 +500,14 @@
 
                 <div class="content has-text-justified">
                     <p>
-                        We have another interesting work that uses another kind of motion artifact, <em>i.e.</em>,
+                        We have a new work that proposes BiT (Blur Interpolation Transformer), a
+                        fast and powerful transformer-based technique for arbitrary factor blur interpolation with
+                        state-of-the-art performance:
+                        <a href="https://arxiv.org/abs/2211.11423">Blur Interpolation Transformer for
+                            Real-World Motion from Blur</a> (<a href="https://zzh-tech.github.io/BiT/">Website</a>,
+                        <a href="https://github.com/zzh-tech/BiT">Code</a>).
+                        <br>
+                        In addition, we have another interesting work that uses another kind of motion artifact, <em>i.e.</em>,
                         rolling shutter distortion, to realize image2video:
                         <a href="https://arxiv.org/abs/2203.06451">Bringing Rolling Shutter Images Alive with Dual
                             Reversed Distortion</a> (<a href="https://zzh-tech.github.io/Dual-Reversed-RS/">Website</a>,
@@ -532,11 +542,19 @@
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
-        <pre><code>@article{zhong2022animation,
-  title={Animation from Blur: Multi-modal Blur Decomposition with Motion Guidance},
+        <pre><code>@inproceedings{zhong2022animation,
+  title={Animation from blur: Multi-modal blur decomposition with motion guidance},
   author={Zhong, Zhihang and Sun, Xiao and Wu, Zhirong and Zheng, Yinqiang and Lin, Stephen and Sato, Imari},
-  journal={arXiv preprint arXiv:2207.10123},
-  year={2022}
+  booktitle={Computer Vision--ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part XIX},
+  pages={599--615},
+  year={2022},
+  organization={Springer}
+}</code></pre>
+        <pre><code>@inproceedings{zhong2023blur,
+  title={Blur Interpolation Transformer for Real-World Motion from Blur},
+  author={Zhong, Zhihang and Cao, Mingdeng and Ji, Xiang and Zheng, Yinqiang and Sato, Imari},
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023}
 }</code></pre>
     </div>
 </section>
