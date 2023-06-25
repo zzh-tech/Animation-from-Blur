@@ -4,7 +4,7 @@
 
 by [Zhihang Zhong](https://zzh-tech.github.io/), Xiao Sun, Zhirong Wu, Yinqiang Zheng, Stephen Lin, and Imari Sato
 
-:point_right: [Project website](https://zzh-tech.github.io/Animation-from-Blur/), [Video demo](https://drive.google.com/file/d/1ixlU0j-ZnXriVewGe5mQ2pd5mII8d72C/view?usp=sharing)
+:point_right: [Project website](https://zzh-tech.github.io/Animation-from-Blur/), [Video demo](https://drive.google.com/file/d/1fsKGdBKAgYFBfpRhNfU3jCV_53N1u-5S/view?usp=sharing)
 
 Please leave a ⭐ if you like this project!
 
@@ -29,9 +29,9 @@ users.
 
 ## Preparation
 
-Please download B-AIST++ dataset from this [link](https://drive.google.com/file/d/1Zt96gFnpPpuIqeD3QGPlW6fXhkogjuy_/view?usp=sharing) and unzip it under *./dataset/* directory.
+Please download B-AIST++ dataset from this [link](https://drive.google.com/file/d/1QJ7N3Z86C1ogWaOsuF8-Q88aPGCPUrDL/view?usp=sharing) and unzip it under *./dataset/* directory.
 
-Please download checkpoints from this [link](https://drive.google.com/drive/folders/1JlBpYrveC9eN8nw8XIqbj7iq9tesqGu4?usp=sharing) and put them under *./checkpoints/* directory.
+Please download checkpoints from this [link](https://drive.google.com/drive/folders/1dMLluRymW4uO8P5vgxIP48VwqPL1HMkz?usp=sharing) and put them under *./checkpoints/* directory.
 
 #### Installation:
 
